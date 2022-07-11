@@ -63,7 +63,7 @@ Step:
 Step: 
 1. You should first download and build the library from https://github.com/waspinator/pycococreator.git
 2. Create a shortcut of the data folder (the Dataset folder) then copy it to the **data_COCOformat** folder by running  
-```ln -s (data folder address) data_COCOformat``` (```ln -s data_generation/logs/Dataset/ data_COCOformat/```)
+```ln -s (data folder address) data_COCOformat``` (```ln -s /home/masselmeier3/Desktop/Research/segmentation_steppability/data_generation/logs/Dataset/ ./data_COCOformat/```)
 3. Enter **data_COCOformat** folder by running  
 ```cd data_COCOformat```
 4. Run the following command to generate the coco style data index  
