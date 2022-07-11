@@ -92,18 +92,49 @@ def main(args, shapes):
                   [0.690, 0.470, 0.631],  # purple
                   [0.462, 0.717, 0.698],  # cyan
                   [0.990, 0.615, 0.654]]  #pink
+
+
+        step_threshs = [[0.990, 0.1, 0.1], # non-steppable
+                       [0.1, 0.990, 0.1]] # steppable
+
         segmodal_img_black_white = np.zeros((480, 640, 3)).astype(np.uint8)
         segmodal_img_bin = np.zeros((480, 640, 3)).astype(np.uint8)
         img = color_img / 255
+
+        step_thresh = np.array(step_threshs[1])
+        margin = 0.1
+        lower_color = np.array([0.0, 0.9, 0.0])
+        upper_color = np.array([0.1, 1.0, 0.1])
+
+        # getting steppable mask, all steppable pixels
+        mask = cv2.inRange(img, lower_color, upper_color) # returns 0 or 255
+        print("mask: ", mask)  # (480, 640)
+        
+        img[mask == 255] = [1.0, 1.0, 1.0]
+        print('img: ', img)
+        res = cv2.bitwise_and(img, img, mask=mask) # img values where mask is true ([1, 0, 0])
+        res = np.where(res != 0, 1, 0) # res !=0 then 1 else 0 (1's for all pixels where object is)
+        
+        # construct segmodal black and white image
+        segmodal_img_black_white = segmodal_img_black_white + res * 255
+        segmodal_img_black_white=np.minimum(segmodal_img_black_white, 255)
+        segmodal_img_black_white = segmodal_img_black_white.astype(np.uint8)
+
+        # construct segmodal bin image
+        bicolor_img_mask = np.where(res != 0, 1, 0).astype(np.uint8)
+        segmodal_img_bin = segmodal_img_bin + bicolor_img_mask
+
+        '''
         for idx_obj in range(num_obj):
             cur_thresh = np.array(thresh[idx_obj])
             margin = 0.1
             lower_color = cur_thresh * (1.0 - margin)
             upper_color = cur_thresh * (1.0 + margin)
 
+            # getting object-wise mask, all pixels of object color = 1
             mask = cv2.inRange(img, lower_color, upper_color)
             res = cv2.bitwise_and(img, img, mask=mask) # keep the values where mask = 1
-            res = np.where(res != 0, 1, 0) # res !=0 then 1 else 0
+            res = np.where(res != 0, 1, 0) # res !=0 then 1 else 0 (1's for all pixels where object is)
 
             # construct segmodal black and white image
             segmodal_img_black_white = segmodal_img_black_white + res * 255
@@ -112,14 +143,14 @@ def main(args, shapes):
             # construct segmodal bin image
             bicolor_img_mask = np.where(res != 0, (idx_obj + 1), 0).astype(np.uint8)
             segmodal_img_bin = segmodal_img_bin + bicolor_img_mask
-
+        '''
 
         logger.save_segmask(iter, segmodal_img_black_white, segmodal_img_bin)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Data Collection Process")
-    parser.add_argument("-n", "--num_iterations", default=25000, help="number of images to collect")
+    parser.add_argument("-n", "--num_iterations", default=25, help="number of images to collect")
     parser.add_argument("-o", "--offset", default=0, help="start saving images starting from #offset image")
     parser.add_argument("-p", "--port", default=19999, help="port number")
     args = parser.parse_args()

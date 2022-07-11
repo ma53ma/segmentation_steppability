@@ -195,7 +195,8 @@ class Robot(object):
             # default static
 
             object_static = 0
-            override_mtl = 1
+            override_with_mtl = 1
+
             if curr_shape_name=='Semisphere':
                 object_orientation =[1/6*np.pi*(np.random.random_sample()-0.5),
                                      1/6*np.pi*(np.random.random_sample()-0.5), 0.0]
@@ -203,7 +204,7 @@ class Robot(object):
                 object_position = [drop_x, drop_y, 0.0]
                 object_orientation = [0.0, 0.0, 0.0]
                 object_static = 1
-                override_mtl = 0 
+                override_with_mtl = 0  # want to keep original mtl with colored top
             elif curr_shape_name=='Cylinder':
                 if np.random.randint(2)==1: # right up on ground
                     object_orientation = [1 / 10 * np.pi * (np.random.random_sample() - 0.5),
@@ -252,12 +253,13 @@ class Robot(object):
                 object_orientation = [2*np.pi*np.random.random_sample(), 2*np.pi*np.random.random_sample(), 2*np.pi*np.random.random_sample()] # where to change rotation 
 
             
+            #object_color =[ self.obj_mesh_color[self.shapes_dict[curr_shape_name]][0],self.obj_mesh_color[self.shapes_dict[curr_shape_name]][1],self.obj_mesh_color[self.shapes_dict[curr_shape_name]][2]]
             object_color = [1.0, 0.0, 0.0] #[self.obj_mesh_color[self.shapes_dict[curr_shape_name]][0],self.obj_mesh_color[self.shapes_dict[curr_shape_name]][1],self.obj_mesh_color[self.shapes_dict[curr_shape_name]][2]]
 
             # input_ints = [object_static] # 
             
 
-            input_ints = [object_static, override_mtl]  # any number of integers gets passed in fine
+            input_ints = [object_static, override_with_mtl]  # any number of integers gets passed in fine
             # print('input ints: ', input_ints)
             input_floats = object_position + object_orientation + object_color
             input_strings = [curr_mesh_file, curr_shape_name] # need curr_shape_name for some reason

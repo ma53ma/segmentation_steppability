@@ -62,11 +62,11 @@ class Logger():
 
     def save_segmask(self, iteration, segmask_img_filled, segmask_img_label):
         """ Method to save segmask image """
-        ## rgb segmask images
+        ## rgb segmask images (all objects appear as white)
         segmask_img_filled = cv2.cvtColor(segmask_img_filled, cv2.COLOR_RGB2GRAY)
         cv2.imwrite(os.path.join(self.segmask_rgb_directory, 'segmask_img_filled_%06d.png' % (iteration + self.offset)), segmask_img_filled)
 
-        ## binary segmask images
+        ## binary segmask images (all objects appear as their label)
         segmask_img_label = cv2.cvtColor(segmask_img_label, cv2.COLOR_RGB2GRAY)
         cv2.imwrite(os.path.join(self.segmask_bin_directory, 'segmask_img_label_%06d.png' % (iteration + self.offset)), segmask_img_label)
 
