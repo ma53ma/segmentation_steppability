@@ -67,9 +67,9 @@ Step:
 3. Enter **data_COCOformat** folder by running  
 ```cd data_COCOformat```
 4. Run the following command to generate the coco style data index  
-```python coco_generate.py```
+```python3 coco_generate.py```
 5. Run the following command to calculate the mean \& std of the training data  
-```python compute_mean_ddd_255.py```
+```python3 compute_mean_ddd_255.py```
 
 ### How to train/test on the simulation data
 Step:
