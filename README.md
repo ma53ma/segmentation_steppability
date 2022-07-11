@@ -53,7 +53,7 @@ Step:
 (You can also use **./shell.sh** to generate data in multiprocessing.)   
 (You need to rename the output folder's name from e.g. 2020-01-05.17:16:44 to 0 in the logs folder.)
 3. Copy the **utils/preprocess_stretch_noise.py** to the same level of the generated dataset folder (place within logs folder) then run it by   
-```python preprocess_stretch_noise.py``` 
+```python3 preprocess_stretch_noise.py``` 
 (Note that the current preprocessing program deals with the data folders named with 0, 5000, 10000 to 100000, and divide them into 75000/25000 as training dataset and test dataset. You can modify the corresponding python scripts to customize your data.)
 1. (Optional) You can also modify the VREP environment according to your case by running  
 ```./shell_get_environment.sh```.
