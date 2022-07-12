@@ -80,8 +80,8 @@ Step:
 4. Add a **config/XXX.yaml**  for your configuration, including solver, model, etc. Note that **maskrcnn_benchmark/configs/defaults.py** contains more parameters that you can edit.
 5. Modify the **train_net.py** and **test_net.py** to add your configuration.
 6. Run the following command for training or testing  
-```python train_net.py```  
-```python test_net.py``` 
+```python tools/train_net.py```  
+```python tools/test_net.py``` 
 
 ### How to test on Kinect data
 Step:
