@@ -4,7 +4,7 @@ Updated to run the standard coco dataset
 ## How to train/test on the simulation data
 Steps:
 1. Follow the ```INSTALL.md``` to install the maskrcnn_benchmark repo
-2. Modify the ```maskrcnn_benchmark/configs/paths_catalog.py``` to add the previous dataset address (Our proposed method use the same dataset address name. So you do not have to bother this step if you follow our data generation process.)
+2. Modify the ```maskrcnn_benchmark/config/paths_catalog.py``` to add the previous dataset address (Our proposed method use the same dataset address name. So you do not have to bother this step if you follow our data generation process.)
 3. Add a ```config/XXX.yaml```  for your own configuration including solver, model and etc. Note that ```maskrcnn_benchmark/configs/defaults.py``` contains more parameters which you can edit.
 4. Modify the ```train_net.py``` and ```test_net.py``` to add your own configuration.
 5. Run the following command for training or testing  
