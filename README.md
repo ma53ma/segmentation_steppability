@@ -80,9 +80,10 @@ Step:
 4. Create shortcut to our dataset: ```ln -s /home/masselmeier3/Desktop/Research/segmentation_steppability/data_COCOformat/Dataset (directory of datasets folder defined in paths_catalog.py)```
 5. Add a **config/XXX.yaml**  for your configuration, including solver, model, etc. Note that **maskrcnn_benchmark/configs/defaults.py** contains more parameters that you can edit.
 6. Modify the **train_net.py** and **test_net.py** to add your configuration.
-7. Run the following command for training or testing  
-```python tools/train_net.py```  
-```python tools/test_net.py``` 
+7. cd into tools directory
+8. Run the following command for training or testing  
+```python train_net.py```  
+```python test_net.py``` 
 
 ### How to test on Kinect data
 Step:
