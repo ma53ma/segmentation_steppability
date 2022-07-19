@@ -87,7 +87,7 @@ Step:
 ### How to test on Kinect data
 Step:
 1. Copy the test data folder into **demo** folder. The test data folder should follow the following structure:  
-**XXX/0/depth_npy_0.npy, XXX/0/color_image_0.npy**
+**XXX/0/depth_npy_0.npy, XXX/0/color_image_0.png**
 where XXX is the name of the test data folder; 0 refers to the order number of the experiments; depth_npy_0.npy is the point cloud file; color_image_0.png is the RGB ground truth image.
 2. Modify the target test data folder in **preprocess_kinect.py** then run it by
 ```python preprocess_kinect.py```  
