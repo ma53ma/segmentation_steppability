@@ -68,7 +68,7 @@ Step:
 ```cd data_COCOformat```
 4. Run the following command to generate the coco style data index  
 ```python3 coco_generate.py```
-5. Run the following command to calculate the mean \& std of the training data  
+5. Run the following command to calculate the mean \& std of the training data  (and add to .yaml config?)
 ```python3 compute_mean_ddd_255.py```
 
 ### How to train/test on the simulation data
