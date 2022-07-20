@@ -77,7 +77,7 @@ Step:
 ```cd maskrcnn_test```
 2. Follow the **INSTALL.md** to install the maskrcnn_benchmark repo
 3. Modify the **maskrcnn_benchmark/config/paths_catalog.py** to add the previous dataset address (Our proposed method use the same dataset address name. So you do not have to bother this step if you follow our data generation process.)
-4. Add a **config/XXX.yaml**  for your configuration, including solver, model, etc. Note that **maskrcnn_benchmark/configs/defaults.py** contains more parameters that you can edit.
+4. Add a **config/XXX.yaml**  for your configuration, including solver, model, weights, num_classes, etc. Note that **maskrcnn_benchmark/configs/defaults.py** contains more parameters that you can edit.
 5. Modify the **train_net.py** and **test_net.py** to add your configuration.
 6. cd into tools directory
 7. Run the following command for training or testing  
